@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Lista</title>
+</head>
+<body>
+    <h1>Gerador de Lista</h1>
+    <input type="number" id="numberInput" placeholder="Digite um número">
+    <button onclick="generateList()">Gerar Lista</button>
+    <ul id="itemList"></ul>
+    <p id="message"></p>
+
+    <script>
+        function generateList() {
+            const input = document.getElementById('numberInput').value;
+            const itemList = document.getElementById('itemList');
+            const message = document.getElementById('message');
+            
+            itemList.innerHTML = '';
+            message.textContent = '';
+
+            if (!input) {
+                message.textContent = 'Por favor, insira um número válido';
+            } else {
+                const number = parseInt(input);
+                if (number > 0) {
+                    for (let i = 1; i <= number; i++) {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `Pedro ${i} - `; 
+                        itemList.appendChild(listItem);
+                    }
+                } else {
+                    message.textContent = 'Por favor, insira um número válido';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
